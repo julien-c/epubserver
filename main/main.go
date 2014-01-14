@@ -17,6 +17,7 @@ func openChrome() {
 
 
 func main() {
+	var launchChrome = flag.Bool("launch", false, "Open browser at launch")
 	flag.Parse()
 	if len(flag.Args()) == 0 {
 		fmt.Println("You need to specify a file name.")
@@ -29,7 +30,9 @@ func main() {
 		os.Exit(1)
 	}
 	
-	// go openChrome()
+	if *launchChrome {
+		go openChrome()
+	}
 	
 	epub.Serve()
 }
