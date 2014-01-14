@@ -1,3 +1,6 @@
+package epubserver
+
+const ReaderJs = `
 document.onkeydown = function(e) {
 	if (e.which == 37) {
 		if (componentPrev) {
@@ -10,3 +13,4 @@ document.onkeydown = function(e) {
 		}
 	}
 };
+`

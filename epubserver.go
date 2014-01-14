@@ -85,8 +85,8 @@ func (epub *Epub) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				nextItem, _ := epub.getItemFromId(next)
 				nextHref = epub.FullHref(nextItem)
 			}
-			js := fmt.Sprintf("<script>var componentPrev = %q; var componentNext = %q;</script>", prevHref, nextHref)
-			fileString := strings.Replace(string(file), "</body>", js + "<script src='/javascripts/reader.js'></script></body>", 1)
+			js := fmt.Sprintf("<script>var componentPrev = %q; var componentNext = %q; %s</script>", prevHref, nextHref, ReaderJs)
+			fileString := strings.Replace(string(file), "</body>", js + "</body>", 1)
 			w.Header().Set("Content-Type", item.MediaType)
 			w.Write([]byte(fileString))
 		} else {
