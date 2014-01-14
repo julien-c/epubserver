@@ -14,8 +14,6 @@ type Epub struct {
 	Opfdir   string
 }
 
-
-
 func (epub *Epub) readFile(name string) (io.ReadCloser, error) {
 	for _, f := range epub.Zip.File {
 		if f.Name == name {
@@ -32,7 +30,7 @@ func (epub *Epub) readFile(name string) (io.ReadCloser, error) {
 
 func (epub *Epub) getFile(name string) ([]byte, error) {
 	rc, err := epub.readFile(name)
-	
+
 	if err != nil {
 		return nil, err
 	} else {
@@ -71,7 +69,7 @@ func (epub *Epub) getSpinePrevNext(id string) (isInSpine bool, prev, next string
 			if pos > 0 {
 				prev = epub.Spine[pos-1].Idref
 			}
-			if pos < len(epub.Spine) - 1 {
+			if pos < len(epub.Spine)-1 {
 				next = epub.Spine[pos+1].Idref
 			}
 			return true, prev, next
@@ -80,8 +78,7 @@ func (epub *Epub) getSpinePrevNext(id string) (isInSpine bool, prev, next string
 	return false, "", ""
 }
 
-
-func (epub *Epub) FullHref(item ManifestItem) (string) {
+func (epub *Epub) FullHref(item ManifestItem) string {
 	if epub.Opfdir == "." {
 		return item.Href
 	} else {

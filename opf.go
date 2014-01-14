@@ -5,7 +5,7 @@ import (
 )
 
 // XML Parsing
-// 
+//
 type Package struct {
 	XMLName  xml.Name `xml:"package"`
 	Version  string   `xml:"version,attr"`
@@ -18,9 +18,9 @@ type Manifest struct {
 }
 
 type ManifestItem struct {
-	Href      string   `xml:"href,attr"`
-	Id        string   `xml:"id,attr"`
-	MediaType string   `xml:"media-type,attr"`
+	Href      string `xml:"href,attr"`
+	Id        string `xml:"id,attr"`
+	MediaType string `xml:"media-type,attr"`
 }
 
 type Spine struct {
@@ -29,6 +29,6 @@ type Spine struct {
 }
 
 type Itemref struct {
-	Idref     string   `xml:"idref,attr"`
-	Linear    string   `xml:"linear,attr"`
+	Idref  string `xml:"idref,attr"`
+	Linear string `xml:"linear,attr"`
 }
